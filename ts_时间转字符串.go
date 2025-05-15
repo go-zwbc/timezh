@@ -42,8 +42,8 @@ func NewTs日期转字符串(s格式布局 string) *ts日期转字符串 {
 	}
 }
 
-func (ts *ts日期转字符串) Get转字符串(vTime time.Time) string {
-	return vTime.Format(ts.s格式布局)
+func (ts *ts日期转字符串) Get转字符串(t time.Time) string {
+	return t.Format(ts.s格式布局)
 }
 
 func (ts *ts日期转字符串) Get现在日期(z时区位置 *time.Location) string {
@@ -62,20 +62,20 @@ func (ts *ts日期转字符串) Get最近含当日的前N个工作日(n int, z�
 	return ts.Get某天含当日的前N个工作日(time.Now().In(z时区位置), n)
 }
 
-func (ts *ts日期转字符串) Get某天含当日的前N个工作日(vTime time.Time, n int) (workdays []string) {
+func (ts *ts日期转字符串) Get某天含当日的前N个工作日(t time.Time, n int) (workdays []string) {
 	for {
-		if WK.Is工作日(vTime) {
-			workdays = append(workdays, ts.Get转字符串(vTime))
+		if WK.Is工作日(t) {
+			workdays = append(workdays, ts.Get转字符串(t))
 			if len(workdays) == n {
 				return workdays
 			}
 		}
-		vTime = vTime.AddDate(0, 0, -1)
+		t = t.AddDate(0, 0, -1)
 	}
 }
 
-func (ts *ts日期转字符串) Get获取当月1号的日期(vTime time.Time) string {
-	Y, M := TI.Get年份和月份(vTime)
+func (ts *ts日期转字符串) Get获取当月1号的日期(t time.Time) string {
+	Y, M := TI.Get年份和月份(t)
 	return IS.Get日期(Y, M, 1)
 }
 
@@ -89,8 +89,8 @@ func NewTs时间转字符串(s格式布局 string) *ts时间转字符串 {
 	}
 }
 
-func (ts *ts时间转字符串) Get转字符串(vTime time.Time) string {
-	return vTime.Format(ts.s格式布局)
+func (ts *ts时间转字符串) Get转字符串(t time.Time) string {
+	return t.Format(ts.s格式布局)
 }
 
 func (ts *ts时间转字符串) Get现在时间(z时区位置 *time.Location) string {

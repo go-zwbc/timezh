@@ -24,16 +24,16 @@ type rs正则匹配时间字符串 struct {
 	regexp年份          *regexp.Regexp
 }
 
-func (match *rs正则匹配时间字符串) Match日期(s string) bool {
-	return match.regexp日期.MatchString(s)
+func (match *rs正则匹配时间字符串) Match日期(s标准日期 string) bool {
+	return match.regexp日期.MatchString(s标准日期)
 }
 
-func (match *rs正则匹配时间字符串) Match时刻(s string) bool {
-	return match.regexp时刻.MatchString(s)
+func (match *rs正则匹配时间字符串) Match时刻(s标准时刻 string) bool {
+	return match.regexp时刻.MatchString(s标准时刻)
 }
 
-func (match *rs正则匹配时间字符串) Match时间(s string) bool {
-	return match.regexp时间.MatchString(s)
+func (match *rs正则匹配时间字符串) Match时间(s标准时间 string) bool {
+	return match.regexp时间.MatchString(s标准时间)
 }
 
 func (match *rs正则匹配时间字符串) Match日期和零时零分零秒时间(s string) bool {
@@ -52,6 +52,6 @@ func (match *rs正则匹配时间字符串) Match时刻8位带毫秒纯数(s str
 	return match.regexp时刻8位带毫秒纯数.MatchString(s)
 }
 
-func (match *rs正则匹配时间字符串) Match年份(s string) bool {
-	return match.regexp年份.MatchString(s)
+func (match *rs正则匹配时间字符串) Match年份(s四位年份 string) bool {
+	return match.regexp年份.MatchString(s四位年份)
 }

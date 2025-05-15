@@ -1,29 +1,30 @@
-package timezh
+package timezh_test
 
 import (
-	"fmt"
 	"testing"
 	"time"
+
+	"github.com/go-zwbc/timezh"
 )
 
-func TestZone(t *testing.T) {
-	fmt.Println(time.Now().Zone())
-	fmt.Println(time.Now().Format("2006-01-02 15:04:05 -0700"))
-	fmt.Println(time.Now())
-	fmt.Println(time.Now().In(ZONE.CST))
+func TestTimeZone(t *testing.T) {
+	t.Log(time.Now().Zone())
+	t.Log(time.Now().Format("2006-01-02 15:04:05 -0700"))
+	t.Log(time.Now())
+	t.Log(time.Now().In(timezh.TZ.CST))
 	{
-		fmt.Println(time.Now().In(ZONE.UTC))
-		fmt.Println(time.Now().In(ZONE.UTC).Zone())
+		t.Log(time.Now().In(timezh.TZ.UTC))
+		t.Log(time.Now().In(timezh.TZ.UTC).Zone())
 	}
 	{
 		zoneTemp := time.FixedZone("自定义时区", 20)
-		fmt.Println(time.Now().In(zoneTemp).Format("2006-01-02 15:04:05 -070000 MST"))
-		fmt.Println(time.Now().In(zoneTemp).Zone())
+		t.Log(time.Now().In(zoneTemp).Format("2006-01-02 15:04:05 -070000 MST"))
+		t.Log(time.Now().In(zoneTemp).Zone())
 	}
-	fmt.Println(time.Now())
+	t.Log(time.Now())
 }
 
 func TestFormat(t *testing.T) {
-	fmt.Println(time.Now().In(ZONE.UTC).Format(time.RFC3339))
-	fmt.Println(time.Now().In(ZONE.CST).Format(time.RFC1123))
+	t.Log(time.Now().In(timezh.TZ.UTC).Format(time.RFC3339))
+	t.Log(time.Now().In(timezh.TZ.CST).Format(time.RFC1123))
 }

@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	time.Local = timezh.ZONE.CST //通过这样，也能改变整个程序的运行时区位置
+	time.Local = timezh.TZ.CST //通过这样，也能改变整个程序的运行时区位置，但不建议这样做
 }
 
 func main() {
